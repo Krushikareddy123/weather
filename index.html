@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   
+</head>
+
+<body>
+
+   <center><h1></h1></center> 
+<center>
+    <form action="">
+
+        <input type="text" placeholder="enter the city name">
+
+
+        <input type="submit">
+    </form>
+</center>
+    
+    <script>
+       var d = document.forms;
+       var h11=document.getElementsByTagName("h1");
+       h11[0].innerText="ENTER THE CITY NAME TO KNOW THE TEMPERATURE OF CITY"
+       h11[0].setAttribute("style","color:red")
+    var h12 = document.createElement("h1");
+    document.body.appendChild(h12)
+      
+       d[0].addEventListener("submit",function(e){
+        e.preventDefault();
+       var hk=e.target[0].value
+        var a='https://api.openweathermap.org/data/2.5/weather?q='
+       var b='&appid=cb438f9a597989dc850cea5d43422450'
+       var hi = a+hk+b
+
+       fetch(hi,{
+
+        method:"get"
+
+       }).then((val)=>{
+        return val.json()
+       }).then((val)=>{
+       // console.log(val.main.temp-273.15);
+
+num=parseInt(val.main.temp-273.15)
+if(num<=15){
+    h12.style.backgroundImage="url(https://newzoogle.com/wp-content/uploads/2017/03/Top-7-Beautiful-Winter-Snow-Live-Wallpapers-for-Android.jpg)";
+    h12.style.backgroundSize="cover";
+    h12.style.width="100%";
+    h12.style.height="700px";
+
+}
+h12.innerHTML=num+"<sup>0</sup>c"
+
+if(num>15 && num<30){
+    h12.style.backgroundImage="url(https://images.hdqwalls.com/wallpapers/clouds-summer-weather-5k-1b.jpg)"
+    h12.style.backgroundSize="cover";
+    h12.style.width="100%";
+    h12.style.height="700px";
+}
+h12.innerHTML=num+"<sup>0</sup>c"
+if(num>=30 && num<45){
+    h12.style.backgroundImage="url(https://www.metrorod.co.uk/wp-content/uploads/2020/08/sun-setting-over-a-golden-field.jpg)"
+    h12.style.backgroundSize="cover";
+    h12.style.width="100%";
+    h12.style.height="700px";
+}
+
+h12.innerHTML=num+"<sup>0</sup>c"
+
+        
+       })
+
+    
+
+
+
+
+
+        //   e.target[0].value="";
+        //   e.target[1].value="";
+       })
+
+     
+
+
+
+
+
+
+
+
+
+
+
+       // fetch("https://api.openweathermap.org/data/2.5/weather?q=&appid=API key"{
+
+         //   method:"get"
+
+        //   })
+    </script>
+</body>
+</html>
